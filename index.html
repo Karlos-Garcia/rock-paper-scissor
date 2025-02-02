@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        function getHumanChoice() {
+            let humanChoice = prompt("rock, paper, or scissor")
+            humanChoice = humanChoice.toLowerCase()
+            if (humanChoice == "rock") {
+                return ("rock")
+            }
+            else if (humanChoice == "paper") {
+                return ("paper")
+            }
+            else if (humanChoice == "scissor") {
+                return ("scissor")
+            }
+            else {
+                console.log("That is not a valid option!!!")
+                getHumanChoice()
+            }
+        }
+
+        function getComputerChoice() {
+            let computerChoice = Math.floor(Math.random() * 3) + 1;
+            
+            if (computerChoice === 1) {
+                return ("rock")
+            }
+            else if (computerChoice === 2) {
+                return ("paper")
+            }
+            else {
+                return ("scissor")
+            }
+        }
+
+        // const humanSelection = getHumanChoice();
+        // const computerSelection = getComputerChoice();
+
+        function playGame() {
+            let humanScore = 0;
+            let computerScore = 0;
+
+            function playRound(humanChoice, computerChoice){
+            
+            if (humanChoice == "rock" && computerChoice == "rock") {
+                console.log("rock ties with rock. no score!!!")
+            }
+            else if (humanChoice == "rock" && computerChoice == "scissor") {
+                console.log("rock wins against scissor. you win a point!!!")
+                humanScore++;
+            }
+            else if (humanChoice == "rock" && computerChoice == "paper") {
+                console.log("rock loses against paper. computer scores a point!!!")
+                computerScore++
+            }
+            else if (humanChoice == "paper" && computerChoice == "rock") {
+                console.log("paper wins against rock. you win a point!!!")
+                humanScore++
+            }
+            else if (humanChoice == "paper" && computerChoice == "paper") {
+                console.log("paper ties with paper. no point!!!")
+
+            }
+            else if (humanChoice == "paper" && computerChoice == "scissor") {
+                console.log("paper loses against scissor. computer scores a point!!!")
+                computerScore++
+            }
+            else if (humanChoice == "scissor" && computerChoice == "rock") {
+                console.log("scissor loses against rock. computer scores a point!!!")
+                computerScore++
+            }
+            else if (humanChoice == "scissor" && computerChoice == "paper") {
+                console.log("scissor wins against paper. you win a point!!!")
+                humanScore++
+            }
+            else if (humanChoice == "scissor" && computerChoice == "scissor") {
+                console.log("ties with scissor. no point!!!") 
+            }
+            console.log("human: " + humanScore)
+            console.log("computer: " + computerScore)
+        }
+            for (let i = 0; i < 5; i++) {
+                const humanSelection = getHumanChoice();
+                const computerSelection = getComputerChoice();
+                playRound(humanSelection, computerSelection)
+
+            }
+            
+            if (humanScore > computerScore) {
+                console.log("You win!!!")
+            }
+            else if (humanScore < computerScore) {
+                console.log("You Lost!!!")
+            }
+
+            
+        }
+
+        playGame()
+
+
+
+        
+
+    </script>
+</body>
+</html>
